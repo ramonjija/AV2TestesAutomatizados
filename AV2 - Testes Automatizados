@@ -1,0 +1,9 @@
+AV2 - Testes Automatizados
+
+Trabalho para ser feito em casa, em duplas, para ser entregue e apresentado no dia 26/09.
+
+Definição do trabalho: construir um bot no Tweeter que "re-tweete" qualquer conteúdo relacionado à disciplina de Especificação por Exemplos e Testes Automatizados. Para isso, o sistema deve conter um cadastro de strings de busca, varrer os posts do tweeter contendo essas strings* e re-tweetar qualquer post que contenha pelo menos uma das strings de busca cadastradas.
+
+* Note ainda que ao efetuar a busca, o sistema deve flexibilizar as strings cadastradas, ignorando espaços, caracteres especiais, se a letra é maiúscula ou minúscula e também se a palavra está no singular ou no plural.
+
+O trabalho consiste então em especificar esses requisitos usando o formato de Especificação por Exemplo, automatizar essa especificação usando o framework de BDD de sua preferência (ex: cucumber, specfow, lettuce, etc), implementar a aplicação e rodar os testes sobre ela. 
