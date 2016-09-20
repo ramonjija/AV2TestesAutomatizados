@@ -160,7 +160,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
         private static void ExibeOpcoes()
         {
             Console.WriteLine("");
-            Console.WriteLine(" Por favor seleciona uma das seguintes opções:");
+            Console.WriteLine(" Por favor selecione uma das seguintes opções:");
             Console.WriteLine("");
             Console.WriteLine(" 0 - Sair do Programa");
             Console.WriteLine(" 1 - Listar Palavras Cadastradas");
