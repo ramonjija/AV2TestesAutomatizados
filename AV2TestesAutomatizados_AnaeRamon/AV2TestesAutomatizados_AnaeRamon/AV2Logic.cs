@@ -130,10 +130,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
             try
             {
-                using(var db = new DBPalavrasContext())
-                {
-                    listaDePalavras = db.Palavras.ToList();
-                }
+                listaDePalavras = ObterListaPalavras();
 
                 if (listaDePalavras.Count >= 1)
                 {
@@ -156,6 +153,24 @@ namespace AV2TestesAutomatizados_AnaeRamon
             {
                Console.WriteLine( " Ocorreu um erro ao listar as palavras");
             }
+        }
+        public IList<PalavrasModel> ObterListaPalavras()
+        {
+            IList<PalavrasModel> listaDePalavras = new List<PalavrasModel>();
+            try
+            {
+                using (var db = new DBPalavrasContext())
+                {
+                    listaDePalavras = db.Palavras.ToList();
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(" Ocorreu um erro ao retornar a lista de palavras do banco de dados");
+                throw;
+            }
+           
+            return listaDePalavras;
         }
         private static void ExibeOpcoes()
         {
