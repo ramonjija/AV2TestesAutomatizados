@@ -13,6 +13,7 @@ namespace AV2Database.Model
     {
         [Key]
         public int Id { get; set; }
+        [Column("ValorPalavra", TypeName ="ntext")]
         public string Nome { get; set; }
 
     }
