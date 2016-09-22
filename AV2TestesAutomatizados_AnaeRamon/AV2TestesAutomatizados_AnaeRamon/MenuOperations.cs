@@ -15,7 +15,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
         {
             string command;
             Console.WriteLine("");
-            Console.WriteLine(" =^_^= BotTwitter - Ana e Ramon =^_^=");
+            Console.WriteLine(" =^_^= BotBDDTwitter - Ana e Ramon =^_^=");
             ExibeOpcoes();
             do
             {

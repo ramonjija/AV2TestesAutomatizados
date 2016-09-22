@@ -1,0 +1,2 @@
+﻿#error (11:2): expected: #EOF, #TableRow, #DocStringSeparator, #StepLine, #TagLine, #ScenarioLine, #ScenarioOutlineLine, #Comment, #Empty, got 'Para isso, deve cadastrar palavras na ferramenta BotBDDTwitter'
+#error (27:2): expected: #EOF, #TableRow, #DocStringSeparator, #StepLine, #TagLine, #ScenarioLine, #ScenarioOutlineLine, #Comment, #Empty, got 'Para organizar melhor a lista de palavras cadastradas'

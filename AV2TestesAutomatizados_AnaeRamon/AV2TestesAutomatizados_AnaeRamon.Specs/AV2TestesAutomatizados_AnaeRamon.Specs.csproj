@@ -99,10 +99,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Busca de palavras-chave.feature</DependentUpon>
     </Compile>
-    <Compile Include="Cadastro de palavras-chave de Busca1.feature.cs">
+    <Compile Include="Gerenciar Palavras Cadastradas.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cadastro de palavras-chave de Busca.feature</DependentUpon>
+      <DependentUpon>Gerenciar Palavras Cadastradas.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,11 +113,11 @@
       <LastGenOutput>Busca de palavras-chave.feature.cs</LastGenOutput>
     </None>
     <None Include="Documentacao AV2\AV2 - Testes Automatizados" />
-    <None Include="packages.config" />
-    <None Include="Cadastro de palavras-chave de Busca.feature">
+    <None Include="Gerenciar Palavras Cadastradas.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Cadastro de palavras-chave de Busca1.feature.cs</LastGenOutput>
+      <LastGenOutput>Gerenciar Palavras Cadastradas.feature.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
