@@ -19,6 +19,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
         {
             MenuOperations start = new MenuOperations();
             start.Menu();
+
         }
 
     }

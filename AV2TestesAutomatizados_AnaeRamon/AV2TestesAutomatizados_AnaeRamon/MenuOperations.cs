@@ -69,6 +69,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                     case "4":
                         Console.WriteLine("");
                         Console.WriteLine(" Bot Iniciado");
+                        ObtemVariacaoPalavras();
                         Console.WriteLine("");
                         break;
                     case "h":
@@ -203,6 +204,13 @@ namespace AV2TestesAutomatizados_AnaeRamon
             }
 
             return valido;
+        }
+        private void ObtemVariacaoPalavras()
+        {
+            GeracaoPalavras gerarPalavras = new GeracaoPalavras();
+            gerarPalavras.Start();
+            //TODO: Acoplar com método do bot para buscar e retweetar tweets com essas palavras
+            var lista = gerarPalavras.ListaDeVariacaoDaPalavras;
         }
     }
 }
