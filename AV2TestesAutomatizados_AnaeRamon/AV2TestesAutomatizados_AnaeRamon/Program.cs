@@ -17,7 +17,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
         private static void Test()
         {
-            AV2Logic start = new AV2Logic();
+            MenuOperations start = new MenuOperations();
             start.Menu();
         }
 

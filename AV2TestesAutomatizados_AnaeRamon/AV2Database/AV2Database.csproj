@@ -104,8 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBPalavrasContext.cs" />
+    <Compile Include="IRepositorio.cs" />
     <Compile Include="Model\PalavrasModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioPalavras.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

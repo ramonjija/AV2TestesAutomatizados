@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace AV2TestesAutomatizados_AnaeRamon
 {
-   public class AV2Logic
+    public class MenuOperations
     {
         public void Menu()
         {
@@ -34,7 +34,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                         Console.WriteLine("");
                         Console.WriteLine(" == Inicio da lista de palavras cadastradas ==");
                         Console.WriteLine("");
-                        
+
                         ListarPalavras();
                         Console.WriteLine(" == Fim da Lista de palavras ==");
                         break;
@@ -64,7 +64,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                             Console.WriteLine(" Não há palavras cadastradas para serem removidas");
                             Console.WriteLine("");
                         }
-                        
+
                         break;
                     case "4":
                         Console.WriteLine("");
@@ -84,24 +84,24 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 }
             } while (!String.Equals(command, "0"));
         }
-        private void RemovePalavra(string IdPalavra)
+        private void RemovePalavra(string idPalavra)
         {
             try
             {
-                using (var db = new DBPalavrasContext())
-                {
-                    var palavra = db.Palavras.Find(Int32.Parse(IdPalavra));
-                    db.Palavras.Remove(palavra);
-                    db.SaveChanges();
-                }
+
+                var unitofwork = new UnitOfWork(new DBPalavrasContext());
+                unitofwork.RemoverPalavra(Int32.Parse(idPalavra));
+
                 Console.WriteLine("");
                 Console.WriteLine(" Palavra removida com sucesso!");
-            }catch(Exception e)
+
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("");
                 Console.WriteLine(" Ocorreu um erro ao remover a palavra");
             }
-            
+
         }
         private void CadastraPalavra(string palavra)
         {
@@ -110,12 +110,11 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
             try
             {
-                using (var db = new DBPalavrasContext())
-                {
-                    db.Palavras.Add(palavraInserida);
-                    db.SaveChanges();
-                }
-            }catch(Exception e)
+                var unitofwork = new UnitOfWork(new DBPalavrasContext());
+                unitofwork.InserirPalavra(palavraInserida);
+
+            }
+            catch (Exception e)
             {
                 resultado = String.Format(" Ocorreu um erro no cadastro da palavra: {0}", palavra);
             }
@@ -138,7 +137,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                     Console.WriteLine(" ___________");
                     foreach (var palavra in listaDePalavras)
                     {
-                        formatacaoPalavras = String.Format(formatacaoPalavras+"  "+ palavra.Id+" -> " +palavra.Nome + "\n");
+                        formatacaoPalavras = String.Format(formatacaoPalavras + "  " + palavra.Id + " -> " + palavra.Nome + "\n");
                     }
                     Console.WriteLine(formatacaoPalavras);
                 }
@@ -149,9 +148,9 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-               Console.WriteLine( " Ocorreu um erro ao listar as palavras");
+                Console.WriteLine(" Ocorreu um erro ao listar as palavras");
             }
         }
         public IList<PalavrasModel> ObterListaPalavras()
@@ -159,17 +158,15 @@ namespace AV2TestesAutomatizados_AnaeRamon
             IList<PalavrasModel> listaDePalavras = new List<PalavrasModel>();
             try
             {
-                using (var db = new DBPalavrasContext())
-                {
-                    listaDePalavras = db.Palavras.ToList();
-                }
+                var unitOfWork = new UnitOfWork(new DBPalavrasContext());
+                listaDePalavras = unitOfWork.ObtemListaPalavras();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(" Ocorreu um erro ao retornar a lista de palavras do banco de dados");
                 throw;
             }
-           
+
             return listaDePalavras;
         }
         private static void ExibeOpcoes()
@@ -193,14 +190,14 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
             try
             {
-                using(var db = new DBPalavrasContext())
+                var unitofwork = new UnitOfWork(new DBPalavrasContext());
+                var quantidadePalavrasInseridas = unitofwork.ObtemListaPalavras().Count;
+                if (!(quantidadePalavrasInseridas > 0))
                 {
-                    if(!(db.Palavras.Count<PalavrasModel>() > 0))
-                    {
-                        valido = false;
-                    }
+                    valido = false;
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(" Ocorreu um erro na validação de remoção de palavras");
             }
