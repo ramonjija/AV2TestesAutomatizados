@@ -14,56 +14,70 @@ namespace AV2TestesAutomatizados_AnaeRamon
 {
     public class GeracaoPalavras
     {
-        public int idPalavraBanco { get; private set; }
-        public string nomePalavraBanco { get; private set; }
-        public IList<List<string>> ListaDeVariacaoDaPalavras { get; private set; }
+
+        public class TermosDeBusca
+        {
+            public string singular { get; set; }
+            public string plural { get; set; }
+            public string minusculo { get; set; }
+            public string maiusculo { get; set; }
+            public string semEspacos { get; set; }
+            public string semCaracteresEspeciais { get; set; }
+            public string palavraCadastrada { get; set; }
+        }
+
+        public List<TermosDeBusca> ListaDeVariacaoDePalavras { get; private set; }
 
         public GeracaoPalavras()
         {
-            ListaDeVariacaoDaPalavras = new List<List<string>>();
+            ListaDeVariacaoDePalavras = new List<TermosDeBusca>();
         }
 
-
-        private List<string> GeraListaDeVariacaoDePalavra()
+        public List<TermosDeBusca> GeraListaDeVariacaoDePalavra()
         {
             var listaDB = new UnitOfWork(new DBPalavrasContext()).ObtemListaPalavras();
-            List<string> listaDeVariacaoDePalavra = new List<string>();
+            //List<TermosDeBusca> listaDeVariacaoDePalavra = new List<TermosDeBusca>();
             foreach (var palavraNaLista in listaDB)
             {
-                listaDeVariacaoDePalavra.Add(TrataPalavra(palavraNaLista, false));
+                ListaDeVariacaoDePalavras.Add(TrataPalavra(palavraNaLista));
             }
-            return listaDeVariacaoDePalavra;
+            return ListaDeVariacaoDePalavras;
         }
 
-        private string TrataPalavra(PalavrasModel palavrasModel, bool trataPlural)
+        private TermosDeBusca TrataPalavra(PalavrasModel palavrasModel)
         {
-            /*
-          Ignorar espaços em branco => Juntar as palavras
-          Ignorar cases => To lowerCase
-          Ignorar caracteres especiais  => remove chars @#$%¨&*
-          Singular e plural => PortuguesePluralizationService ?
-          */
+            TermosDeBusca termosDeBusca = new TermosDeBusca();
+            //Palavra cadastrada
+            termosDeBusca.palavraCadastrada = palavrasModel.Nome;
 
             //Espaços em branco
-            palavrasModel.Nome = palavrasModel.Nome.Replace(" ", string.Empty).Trim();
-            //Minúscula
-            palavrasModel.Nome = palavrasModel.Nome.ToLower();
-            //Especiais
-            palavrasModel.Nome = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
-            //Plural
-            if (trataPlural)
-            {
-                if (!(new PortuguesePluralizationService().IsSingular(palavrasModel.Nome)))
-                {
-                    palavrasModel.Nome = new PortuguesePluralizationService().Singularize(palavrasModel.Nome);
-                }
-            }
-            return palavrasModel.Nome;
-        }
+            //palavrasModel.Nome = palavrasModel.Nome.Replace(" ", string.Empty).Trim();
+            termosDeBusca.semEspacos = palavrasModel.Nome.Replace(" ", string.Empty).Trim();
 
-        internal void Start()
-        {
-          ListaDeVariacaoDaPalavras.Add(new GeracaoPalavras().GeraListaDeVariacaoDePalavra());
+            //Minúscula
+            //palavrasModel.Nome = palavrasModel.Nome.ToLower();
+            termosDeBusca.minusculo = palavrasModel.Nome.ToLower();
+
+            //Maiúscula
+            termosDeBusca.maiusculo = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(palavrasModel.Nome);
+
+            //Especiais
+            //palavrasModel.Nome = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+            termosDeBusca.semCaracteresEspeciais = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+
+            //Plural
+            if (!(new PortuguesePluralizationService().IsSingular(palavrasModel.Nome)))
+            {
+                termosDeBusca.plural = palavrasModel.Nome;
+                termosDeBusca.singular = new PortuguesePluralizationService().Singularize(palavrasModel.Nome);
+                //TODO QUEBRAR A STRING E COLOCAR PLURAL EM TUDO
+            }
+            else
+            {
+                termosDeBusca.plural = new PortuguesePluralizationService().Pluralize(palavrasModel.Nome);
+                termosDeBusca.singular = palavrasModel.Nome;
+            }
+            return termosDeBusca;
         }
     }
 }

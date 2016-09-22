@@ -208,9 +208,9 @@ namespace AV2TestesAutomatizados_AnaeRamon
         private void ObtemVariacaoPalavras()
         {
             GeracaoPalavras gerarPalavras = new GeracaoPalavras();
-            gerarPalavras.Start();
+            var list = gerarPalavras.GeraListaDeVariacaoDePalavra();
             //TODO: Acoplar com método do bot para buscar e retweetar tweets com essas palavras
-            var lista = gerarPalavras.ListaDeVariacaoDaPalavras;
+            
         }
     }
 }
