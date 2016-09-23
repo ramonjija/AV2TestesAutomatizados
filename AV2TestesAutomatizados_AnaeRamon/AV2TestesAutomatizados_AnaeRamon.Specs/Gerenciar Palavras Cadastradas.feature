@@ -31,3 +31,8 @@ Cenario: Remoção de Palavra-chave
 	E a palavra Jujuba, não deve mais ser exibida no sistema.
 
 Cenario: Exibicao de Palavras-chave Cadastradas
+	Dado que Junior cadastrou as palavras Testes, Documentação Viva e BDD
+	E gostaria de confirmar o cadastro de suas palavras
+	Quando digita a opção de listar palavras
+	Então o sistema deve exibir uma lista contendo as palavras Testes, Documentação Viva e BDD.
+	
