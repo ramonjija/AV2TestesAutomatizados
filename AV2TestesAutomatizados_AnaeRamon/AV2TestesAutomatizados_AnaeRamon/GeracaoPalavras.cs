@@ -69,13 +69,42 @@ namespace AV2TestesAutomatizados_AnaeRamon
             if (!(new PortuguesePluralizationService().IsSingular(palavrasModel.Nome)))
             {
                 termosDeBusca.plural = palavrasModel.Nome;
-                termosDeBusca.singular = new PortuguesePluralizationService().Singularize(palavrasModel.Nome);
-                //TODO QUEBRAR A STRING E COLOCAR PLURAL EM TUDO
+                string[] stringPalavras = palavrasModel.Nome.Split();
+                if(stringPalavras.Length > 1)
+                {
+                    for(int i = 0; i < stringPalavras.Length; i++)
+                    {
+                        String termoSingular = new PortuguesePluralizationService().Singularize(stringPalavras[i]);
+                        termosDeBusca.singular += termoSingular + " ";
+                    }
+                    termosDeBusca.singular = termosDeBusca.singular.Trim();
+
+                }
+                else
+                {
+                    termosDeBusca.singular = new PortuguesePluralizationService().Singularize(palavrasModel.Nome);
+
+                }
             }
             else
             {
-                termosDeBusca.plural = new PortuguesePluralizationService().Pluralize(palavrasModel.Nome);
+
                 termosDeBusca.singular = palavrasModel.Nome;
+                string[] stringPalavras = palavrasModel.Nome.Split();
+                if (stringPalavras.Length > 1)
+                {
+                    for (int i = 0; i < stringPalavras.Length; i++)
+                    {
+                        String termoPlural = new PortuguesePluralizationService().Pluralize(stringPalavras[i]);
+                        termosDeBusca.plural += termoPlural + " ";
+                    }
+                    termosDeBusca.plural = termosDeBusca.plural.Trim();
+                }
+                else
+                {
+                    termosDeBusca.plural = new PortuguesePluralizationService().Pluralize(palavrasModel.Nome);
+                }
+                
             }
             return termosDeBusca;
         }
