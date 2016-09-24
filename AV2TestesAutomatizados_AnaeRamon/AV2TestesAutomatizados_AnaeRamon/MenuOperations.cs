@@ -69,8 +69,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                         break;
                     case "4":
                         Console.WriteLine("");
-                        Console.WriteLine(" Bot Iniciado");
-                        ObtemVariacaoPalavras();
+                        wakeupBoot();
 
                         Console.WriteLine("");
                         break;
@@ -207,31 +206,36 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
             return valido;
         }
-        private void ObtemVariacaoPalavras()
+        private List<String> ObtemVariacaoPalavras()
         {
             GeracaoPalavras gerarPalavras = new GeracaoPalavras();
             var list = gerarPalavras.GeraListaDeVariacaoDePalavra();
             //TODO: Acoplar com método do bot para buscar e retweetar tweets com essas palavras
-            
+            return list;
         }
 
-        public void wakeupBoot()
+
+        private void wakeupBoot()
         {
 
-            Console.WriteLine("Wake Up Boot Twitter!");
-            
+            Console.WriteLine("Acordando Boot Twitter!");
+
             var _twitterController = new TwitterConnector();
             SingleUserAuthorizer authorizer = _twitterController.authorization();
-
             Console.WriteLine("Conectado ao twitter.");
-            Console.WriteLine("Varrendo a timeline...");
+            Console.WriteLine("Obtendo do banco de dados as palavras cadastradas...");
+            ObtemVariacaoPalavras();
+            Console.WriteLine("Varrendo o twitter com as palavras cadastradas...");
 
             //metodos com o twitter 
-            TwitterController.BuscarTwitters(authorizer, "searchTerm");
-            
+            List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, "specflow");
+            TwitterController.RetweetAsync(authorizer, arrayTwitters);
+
+            Console.WriteLine("Retweeted Acabou");
             Console.WriteLine("");
             Console.ReadKey();
         }
+
 
     }
 }
