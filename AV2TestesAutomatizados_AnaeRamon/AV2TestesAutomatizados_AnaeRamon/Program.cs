@@ -24,20 +24,17 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
             Console.WriteLine("Wake Up Boot Twitter!");
             
-            //conexao com twitter 
             var _twitterController = new TwitterConnector();
             SingleUserAuthorizer authorizer = _twitterController.authorization();
             Console.WriteLine("Conectado ao twitter.");
+            Console.WriteLine("Varrendo o twitter com as palavras cadastradas...");
 
-            Console.WriteLine("Varrendo a timeline...");
 
             //metodos com o twitter 
-            List<String> tweets = TwitterController.GetMostRecent200HomeTimeLine(authorizer);
-            foreach (var tweet in tweets)
-            {
-                Console.WriteLine(tweet);
-                
-            }
+            List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, "specflow");
+            TwitterController.RetweetAsync(authorizer, arrayTwitters);
+
+            Console.WriteLine("Retweeted Acabou");
             Console.WriteLine("");
             Console.ReadKey();
         }

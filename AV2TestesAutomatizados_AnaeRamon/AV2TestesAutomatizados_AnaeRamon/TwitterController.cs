@@ -29,30 +29,48 @@ namespace AV2TestesAutomatizados_AnaeRamon
             return myTweets;
         }
 
-        public async Task <Status> RetweetAsync(ulong tweetID, SingleUserAuthorizer autho)
+        public static async void RetweetAsync(SingleUserAuthorizer autho, List<ulong> statusTweets)
         {
             var twitterContext = new TwitterContext(autho);
+            
 
-            tweetID = 196991337554378752;
+            foreach (var statustweets in statusTweets)
+            {
+                var retweet = await twitterContext.RetweetAsync(statustweets);
 
-            var publicTweets =
-                await
-                (from tweet in twitterContext.Status
-                 where tweet.Type == StatusType.Retweets &&
-                       tweet.ID == tweetID
-                 select tweet)
-                .ToListAsync();
-
-            if (publicTweets != null)
-                publicTweets.ForEach(tweet =>
+                if (retweet != null &&
+                    retweet.RetweetedStatus != null &&
+                    retweet.RetweetedStatus.User != null)
                 {
-                    if (tweet != null && tweet.User != null)
-                        Console.WriteLine(
-                            "@{0} {1} ({2})",
-                            tweet.User.ScreenNameResponse,
-                            tweet.Text,
-                            tweet.RetweetCount);
-                });
+                    Console.WriteLine("Retweeted um Tweet: ");
+                    Console.WriteLine(
+                        "\nUsuario: " + retweet.RetweetedStatus.User.ScreenNameResponse +
+                        "\nTweet: " + retweet.RetweetedStatus.Text + "\n");
+                }
+            }
+        }
+        
+        public static List<ulong> BuscarTwitters(SingleUserAuthorizer autho, string searchTerm)
+        {
+            List<ulong> statusTwitters = new List<ulong>();
+            var twitterContext = new TwitterContext(autho);
+
+            var srch =
+               Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                           where search.Type == SearchType.Search &&
+                                           search.Query == searchTerm &&
+                                           search.Count == 5
+                                           select search));
+                      
+            if (srch != null && srch.Statuses.Count > 0)
+            {
+                foreach (var statuses in srch.Statuses)
+                {
+                    statusTwitters.Add(statuses.StatusID);
+                }
+                return statusTwitters;
+            }
+
             return null;
         }
     }

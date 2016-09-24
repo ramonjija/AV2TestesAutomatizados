@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AV2Database;
 using AV2Database.Model;
 using System.Data.Entity;
+using LinqToTwitter;
 
 namespace AV2TestesAutomatizados_AnaeRamon
 {
@@ -70,6 +71,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                         Console.WriteLine("");
                         Console.WriteLine(" Bot Iniciado");
                         ObtemVariacaoPalavras();
+
                         Console.WriteLine("");
                         break;
                     case "h":
@@ -212,5 +214,24 @@ namespace AV2TestesAutomatizados_AnaeRamon
             //TODO: Acoplar com método do bot para buscar e retweetar tweets com essas palavras
             
         }
+
+        public void wakeupBoot()
+        {
+
+            Console.WriteLine("Wake Up Boot Twitter!");
+            
+            var _twitterController = new TwitterConnector();
+            SingleUserAuthorizer authorizer = _twitterController.authorization();
+
+            Console.WriteLine("Conectado ao twitter.");
+            Console.WriteLine("Varrendo a timeline...");
+
+            //metodos com o twitter 
+            TwitterController.BuscarTwitters(authorizer, "searchTerm");
+            
+            Console.WriteLine("");
+            Console.ReadKey();
+        }
+
     }
 }
