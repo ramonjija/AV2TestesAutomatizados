@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using LinqToTwitter;
 
@@ -28,6 +27,33 @@ namespace AV2TestesAutomatizados_AnaeRamon
             }
 
             return myTweets;
+        }
+
+        public async Task <Status> RetweetAsync(ulong tweetID, SingleUserAuthorizer autho)
+        {
+            var twitterContext = new TwitterContext(autho);
+
+            tweetID = 196991337554378752;
+
+            var publicTweets =
+                await
+                (from tweet in twitterContext.Status
+                 where tweet.Type == StatusType.Retweets &&
+                       tweet.ID == tweetID
+                 select tweet)
+                .ToListAsync();
+
+            if (publicTweets != null)
+                publicTweets.ForEach(tweet =>
+                {
+                    if (tweet != null && tweet.User != null)
+                        Console.WriteLine(
+                            "@{0} {1} ({2})",
+                            tweet.User.ScreenNameResponse,
+                            tweet.Text,
+                            tweet.RetweetCount);
+                });
+            return null;
         }
     }
 }
