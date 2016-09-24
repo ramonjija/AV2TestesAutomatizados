@@ -137,6 +137,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterConnector.cs" />
+    <Compile Include="TwitterController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
