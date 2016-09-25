@@ -54,7 +54,8 @@ namespace AV2TestesAutomatizados_AnaeRamon
             }
             catch (Exception)
             {
-
+                Console.WriteLine("");
+                Console.WriteLine(":::::::::::::::::ERRO NO RETWITTER :::::::::::::::::::::");
                 Console.WriteLine("Esse tweet já foi retwitado ");
                 Console.WriteLine("Não é possivel retwitar duas vezes ");
             }
