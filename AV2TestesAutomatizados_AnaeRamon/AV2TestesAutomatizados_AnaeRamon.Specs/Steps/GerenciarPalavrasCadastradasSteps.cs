@@ -71,19 +71,10 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [Then(@"o sistema deve exibir a palavra cadastrada ""(.*)""")]
         public void EntaoOSistemaDeveExibirAPalavraCadastrada(string p0)
         {
-            string line = "";
-            int qntLine = process.StandardOutput.Peek();
-            while (qntLine > -1)
-            {
-                line = process.StandardOutput.ReadLine();
-                if (line.Contains(p0))
-                {
-                    break;
-                }
-                qntLine--;
-            }
+            process.StandardInput.Close();
+            string retorno = process.StandardOutput.ReadToEnd();
             process.Close();
-            Assert.IsTrue(line.Contains(p0));
+            Assert.IsTrue(retorno.Contains(" -> "+p0));
         }
         #endregion
 
