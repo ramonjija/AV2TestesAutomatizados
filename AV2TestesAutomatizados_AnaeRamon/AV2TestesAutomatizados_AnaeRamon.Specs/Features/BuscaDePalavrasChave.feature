@@ -5,12 +5,6 @@ Funcionalidade: Busca de palavras-chave no twitter
 	Como aluno de testes automatizados
 	Desejo realizar a busca utilizando as palavras-chave cadastradas
 
-	Cenario: Cadastro de Palavra-Chave
-		Dado que estou no menu principal do app BotTweeter
-		Quando digito a opção de cadastro de palavras
-		E insiro a palavra "Teste"
-		Entao o sistema deve exibir uma mensagem de sucesso de cadastro
-
 	Cenario: Busca de uma palavra-chave ja cadastrada no twitter
 		Dado que ja cadastrei a palavra "Teste" 
 		Quando digito a opção de iniciar boot  

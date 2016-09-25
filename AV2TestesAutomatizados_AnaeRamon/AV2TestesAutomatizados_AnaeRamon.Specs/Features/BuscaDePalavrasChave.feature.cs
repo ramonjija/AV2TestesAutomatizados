@@ -63,19 +63,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Cadastro de Palavra-Chave")]
-        public virtual void CadastroDePalavra_Chave()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastro de Palavra-Chave", ((string[])(null)));
-            this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que estou no menu principal do app BotTweeter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-            testRunner.When("digito a opção de cadastro de palavras", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.And("insiro a palavra \"Teste\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-            testRunner.Then("o sistema deve exibir uma mensagem de sucesso de cadastro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Busca de uma palavra-chave ja cadastrada no twitter")]
         public virtual void BuscaDeUmaPalavra_ChaveJaCadastradaNoTwitter()
         {

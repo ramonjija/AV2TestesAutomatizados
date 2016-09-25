@@ -17,7 +17,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [Given(@"que estou no menu principal do app BotTweeter")]
         public void DadoQueEstouNoMenuPrincipalDoAppBotTweeter()
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(@"C:\vtex\ambiente\github\AV2TestesAutomatizados\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon\bin\Ana\AV2TestesAutomatizados_AnaeRamon.exe");
+            //ProcessStartInfo processStartInfo = new ProcessStartInfo(@"C:\vtex\ambiente\github\AV2TestesAutomatizados\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon\bin\Ana\AV2TestesAutomatizados_AnaeRamon.exe");
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(@"C:\Users\Ramon\Documents\Github\AV2TestesAutomatizados\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon\bin\RHome\AV2TestesAutomatizados_AnaeRamon.exe");
             processStartInfo.RedirectStandardInput = true;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.UseShellExecute = false;
@@ -44,17 +45,19 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         public void EntaoOSistemaDeveExibirUmaMensagemDeSucessoDeCadastro()
         {
             string line = "";
-            while (process.StandardOutput.Peek() > -1)
+            //while (process.StandardOutput.Peek() > -1)
+            int qntLine = process.StandardOutput.Peek();
+            while (qntLine > -1)
             {
                 line = process.StandardOutput.ReadLine();
                 if (line.Equals(" Palavra 'Teste' foi cadastrada com sucesso!"))
                 {
                     break;
                 }
+                qntLine--;
             }
-            Assert.AreEqual(" Palavra 'Teste' foi cadastrada com sucesso!", line);
-
             process.Close();
+            Assert.AreEqual(" Palavra 'Teste' foi cadastrada com sucesso!", line);
         }
 
         #endregion
@@ -70,15 +73,17 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         public void EntaoOSistemaDeveExibirAPalavraCadastrada(string p0)
         {
             string line = "";
-
-            while (process.StandardOutput.Peek() > -1)
+            int qntLine = process.StandardOutput.Peek();
+            while (qntLine > -1)
             {
                 line = process.StandardOutput.ReadLine();
                 if (line.Contains(p0))
                 {
                     break;
                 }
+                qntLine--;
             }
+            process.Close();
             Assert.IsTrue(line.Contains(p0));
         }
         #endregion
@@ -94,8 +99,9 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         {
             string line = "";
             string idPalavra = "0";
-
-            while (process.StandardOutput.Peek() > -1)
+            int qntLinhas = process.StandardOutput.Peek();
+            //while (!process.StandardOutput.EndOfStream)
+            while(qntLinhas > -1)
             {
                 line = process.StandardOutput.ReadLine();
                 if (line.Contains(p0))
@@ -103,6 +109,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                     idPalavra = line.Substring(0, 3).Trim();
                     break;
                 }
+                qntLinhas--;
             }
             process.StandardInput.WriteLine(idPalavra);
         }
@@ -111,15 +118,17 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         public void EntaoOSistemaDeveExibirUmaMensagemDeSucessoDeRemocao()
         {
             string line = "";
-
-            while (process.StandardOutput.Peek() > -1)
+            int qntLines = process.StandardOutput.Peek();
+            while (qntLines > -1)
             {
                 line = process.StandardOutput.ReadLine();
                 if (line.Equals(" Palavra removida com sucesso!"))
                 {
                     break;
                 }
+                qntLines--;
             }
+            process.Close();
             Assert.AreEqual(" Palavra removida com sucesso!", line);
         }
         #endregion
