@@ -227,11 +227,11 @@ namespace AV2TestesAutomatizados_AnaeRamon
             List<GeracaoPalavras.TermosDeBusca> listObtencaoPalavras = ObtemVariacaoPalavras();
             var listDistinctPalavras = listObtencaoPalavras.Distinct().ToList(); //listPalavras.Distinct().ToList();
 
-            Console.WriteLine("Varrendo o twitter com as palavras cadastradas...");
-
+            
             //metodos com o twitter 
             if (listDistinctPalavras.Count > 0)
             {
+                Console.WriteLine("Palavra(s) buscadas com sucesso!");
                 List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, listObtencaoPalavras);
                 TwitterController.RetweetAsync(authorizer, arrayTwitters);
                 Console.WriteLine("Retweeted Acabou");
