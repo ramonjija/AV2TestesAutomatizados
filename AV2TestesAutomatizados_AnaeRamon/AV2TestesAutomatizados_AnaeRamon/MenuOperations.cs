@@ -70,7 +70,6 @@ namespace AV2TestesAutomatizados_AnaeRamon
                     case "4":
                         Console.WriteLine("");
                         wakeupBoot();
-
                         Console.WriteLine("");
                         break;
                     case "h":
@@ -98,7 +97,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 Console.WriteLine(" Palavra removida com sucesso!");
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("");
                 Console.WriteLine(" Ocorreu um erro ao remover a palavra");
@@ -116,7 +115,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 unitofwork.InserirPalavra(palavraInserida);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 resultado = String.Format(" Ocorreu um erro no cadastro da palavra: {0}", palavra);
             }
@@ -150,7 +149,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine(" Ocorreu um erro ao listar as palavras");
             }
@@ -163,7 +162,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 var unitOfWork = new UnitOfWork(new DBPalavrasContext());
                 listaDePalavras = unitOfWork.ObtemListaPalavras();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine(" Ocorreu um erro ao retornar a lista de palavras do banco de dados");
                 throw;
@@ -199,19 +198,20 @@ namespace AV2TestesAutomatizados_AnaeRamon
                     valido = false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine(" Ocorreu um erro na validação de remoção de palavras");
             }
 
             return valido;
         }
-        private List<String> ObtemVariacaoPalavras()
+        private List<GeracaoPalavras.TermosDeBusca> ObtemVariacaoPalavras()
         {
             GeracaoPalavras gerarPalavras = new GeracaoPalavras();
             var list = gerarPalavras.GeraListaDeVariacaoDePalavra();
             //TODO: Acoplar com método do bot para buscar e retweetar tweets com essas palavras
             return list;
+
         }
 
 
@@ -224,11 +224,13 @@ namespace AV2TestesAutomatizados_AnaeRamon
             SingleUserAuthorizer authorizer = _twitterController.authorization();
             Console.WriteLine("Conectado ao twitter.");
             Console.WriteLine("Obtendo do banco de dados as palavras cadastradas...");
-            ObtemVariacaoPalavras();
+            List<GeracaoPalavras.TermosDeBusca> listObtencaoPalavras = ObtemVariacaoPalavras();
+            var listDistinctPalavras = listObtencaoPalavras.Distinct().ToList(); //listPalavras.Distinct().ToList();
+
             Console.WriteLine("Varrendo o twitter com as palavras cadastradas...");
 
             //metodos com o twitter 
-            List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, "specflow");
+            List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, listObtencaoPalavras);
             TwitterController.RetweetAsync(authorizer, arrayTwitters);
 
             Console.WriteLine("Retweeted Acabou");

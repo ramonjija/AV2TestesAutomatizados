@@ -31,47 +31,145 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
         public static async void RetweetAsync(SingleUserAuthorizer autho, List<ulong> statusTweets)
         {
-            var twitterContext = new TwitterContext(autho);
-            
-
-            foreach (var statustweets in statusTweets)
+            try
             {
-                var retweet = await twitterContext.RetweetAsync(statustweets);
+                var twitterContext = new TwitterContext(autho);
 
-                if (retweet != null &&
-                    retweet.RetweetedStatus != null &&
-                    retweet.RetweetedStatus.User != null)
+
+                foreach (var statustweets in statusTweets)
                 {
-                    Console.WriteLine("Retweeted um Tweet: ");
-                    Console.WriteLine(
-                        "\nUsuario: " + retweet.RetweetedStatus.User.ScreenNameResponse +
-                        "\nTweet: " + retweet.RetweetedStatus.Text + "\n");
+                    var retweet = await twitterContext.RetweetAsync(statustweets);
+
+                    if (retweet != null &&
+                        retweet.RetweetedStatus != null &&
+                        retweet.RetweetedStatus.User != null)
+                    {
+                        Console.WriteLine("Retweeted um Tweet: ");
+                        Console.WriteLine(
+                            "\nUsuario: " + retweet.RetweetedStatus.User.ScreenNameResponse +
+                            "\nTweet: " + retweet.RetweetedStatus.Text + "\n");
+                    }
                 }
+
             }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Esse tweet já foi retwitado ");
+                Console.WriteLine("Não é possivel retwitar duas vezes ");
+            }
+
         }
         
-        public static List<ulong> BuscarTwitters(SingleUserAuthorizer autho, string searchTerm)
+        public static List<ulong> BuscarTwitters(SingleUserAuthorizer autho, List<GeracaoPalavras.TermosDeBusca> listSearchTerm)
         {
             List<ulong> statusTwitters = new List<ulong>();
-            var twitterContext = new TwitterContext(autho);
+            var twitterContext = new TwitterContext(autho);         
 
-            var srch =
-               Enumerable.SingleOrDefault((from search in twitterContext.Search
-                                           where search.Type == SearchType.Search &&
-                                           search.Query == searchTerm &&
-                                           search.Count == 5
-                                           select search));
-                      
-            if (srch != null && srch.Statuses.Count > 0)
+            foreach (var searchTerm in listSearchTerm)
             {
-                foreach (var statuses in srch.Statuses)
+                if (searchTerm.singular != null)
                 {
-                    statusTwitters.Add(statuses.StatusID);
+                     var srchSingular =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.singular &&
+                                                   search.Count == 5
+                                                   select search));
+
+                    foreach (var statuses in srchSingular.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                    
                 }
-                return statusTwitters;
+
+                if (searchTerm.plural != null)
+                {
+                    var srchPlural =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.plural &&
+                                                   search.Count == 5
+                                                   select search));
+
+                    foreach (var statuses in srchPlural.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
+                if (searchTerm.minusculo != null)
+                {
+                    var srchMinusculo =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.minusculo &&
+                                                   search.Count == 5
+                                                   select search));
+
+                    foreach (var statuses in srchMinusculo.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
+                if (searchTerm.maiusculo != null)
+                {
+                    var srchMaiusculo =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.maiusculo &&
+                                                   search.Count == 5
+                                                   select search));
+                    foreach (var statuses in srchMaiusculo.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
+                if (searchTerm.semEspacos != null)
+                {
+                    var srchSemEspacos =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.semEspacos &&
+                                                   search.Count == 5
+                                                   select search));
+                    foreach (var statuses in srchSemEspacos.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
+                if (searchTerm.semCaracteresEspeciais != null)
+                {
+                    var srchsemCaracteresEspeciais =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.semCaracteresEspeciais &&
+                                                   search.Count == 5
+                                                   select search));
+
+                    foreach (var statuses in srchsemCaracteresEspeciais.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
+                if (searchTerm.palavraCadastrada != null)
+                {
+                    var srchPalavraCadastrada =
+                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                   where search.Type == SearchType.Search &&
+                                                   search.Query == searchTerm.palavraCadastrada &&
+                                                   search.Count == 5
+                                                   select search));
+                    foreach (var statuses in srchPalavraCadastrada.Statuses)
+                    {
+                        statusTwitters.Add(statuses.StatusID);
+                    }
+                }
             }
 
-            return null;
+            var distinctIdStatus = statusTwitters.Distinct().ToList();
+            return distinctIdStatus;
+
         }
     }
 }
