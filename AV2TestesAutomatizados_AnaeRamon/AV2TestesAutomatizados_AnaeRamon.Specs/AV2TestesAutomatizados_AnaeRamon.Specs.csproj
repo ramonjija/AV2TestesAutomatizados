@@ -71,11 +71,20 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.0.5797.27534, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.0.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="TechTalk.SpecFlow, Version=2.1.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
       <Private>True</Private>
@@ -94,22 +103,46 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Busca de palavras-chave.feature.cs">
+    <Compile Include="Features\Busca de palavras-chave.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Busca de palavras-chave.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Gerenciar-Palavras.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gerenciar-Palavras.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\GerenciarPalavrasCadastradasSteps.cs" />
+    <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Busca de palavras-chave.feature">
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Busca de palavras-chave.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Busca de palavras-chave.feature.cs</LastGenOutput>
     </None>
     <None Include="Documentacao AV2\AV2 - Testes Automatizados" />
+    <None Include="Features\Gerenciar-Palavras.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Gerenciar-Palavras.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AV2Database\AV2Database.csproj">
+      <Project>{8a468b71-2c90-4123-aa37-2eb4966338bd}</Project>
+      <Name>AV2Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon.csproj">
+      <Project>{c66a28d0-54da-482b-a470-c4740e161dfe}</Project>
+      <Name>AV2TestesAutomatizados_AnaeRamon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
