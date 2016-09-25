@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace AV2TestesAutomatizados_AnaeRamon.Specs
+namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
 {
     using TechTalk.SpecFlow;
     
@@ -23,9 +23,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
-        
-#line 1 "Busca de palavras-chave.feature"
-#line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()

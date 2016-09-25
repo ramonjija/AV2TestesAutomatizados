@@ -8,7 +8,7 @@ Funcionalidade: Gerenciar Palavras Cadastradas
 Cenario: Cadastro de Palavras-Chave
 	Dado que Augusto é um estudante assíduo de Testes de Software
 	E gostaria de divulgar mais sobre o assunto utilizando a ferramenta de Bot do twitter
-	Para isso, deve cadastrar palavras na ferramenta BotBDDTwitter
+	E para isso, deve cadastrar palavras na ferramenta BotBDDTwitter
 	Quando Augusto seleciona a opção de cadastro
 	E digita a palavra "Teste"
 	Entao o sistema deve exibir a mensagem "Palavra 'Teste' foi cadastrada com sucesso!"
@@ -24,7 +24,7 @@ Cenario: Cadastro de Palavras-Chave
 Cenario: Remoção de Palavra-chave
 	Dado que Marissa gosta de organização
 	E fica extremamente irritada com informações desnecessárias
-	Para organizar melhor a lista de palavras cadastradas
+	E para organizar melhor a lista de palavras cadastradas
 	Quando Marissa seleciona a opção de Remover Palavra Cadastrada
 	E digita o identificador 5, da palavra cadastrada Jujuba
 	Entao o sistema deve exibir "Palavra removida com sucesso!"
