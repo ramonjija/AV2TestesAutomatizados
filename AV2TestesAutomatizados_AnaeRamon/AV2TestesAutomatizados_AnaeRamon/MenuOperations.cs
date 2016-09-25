@@ -227,15 +227,23 @@ namespace AV2TestesAutomatizados_AnaeRamon
             List<GeracaoPalavras.TermosDeBusca> listObtencaoPalavras = ObtemVariacaoPalavras();
             var listDistinctPalavras = listObtencaoPalavras.Distinct().ToList(); //listPalavras.Distinct().ToList();
 
-            Console.WriteLine("Varrendo o twitter com as palavras cadastradas...");
-
+            
             //metodos com o twitter 
-            List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, listObtencaoPalavras);
-            TwitterController.RetweetAsync(authorizer, arrayTwitters);
-
-            Console.WriteLine("Retweeted Acabou");
+            if (listDistinctPalavras.Count > 0)
+            {
+                Console.WriteLine("Palavra(s) buscadas com sucesso!");
+                List<ulong> arrayTwitters = TwitterController.BuscarTwitters(authorizer, listObtencaoPalavras);
+                TwitterController.RetweetAsync(authorizer, arrayTwitters);
+                Console.WriteLine("Retweeted Acabou");
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine(":::::::::::::::::ERRO NA BUSCA DA PALAVRA :::::::::::::::::::::");
+                Console.WriteLine("Para retwittar uma palavra é necessario primeiro cadastra-la no banco");
+                Console.WriteLine("Digite 'H' para visualizar o menu de opções e cadastra-la");
+            }
             Console.WriteLine("");
-            Console.ReadKey();
         }
 
 

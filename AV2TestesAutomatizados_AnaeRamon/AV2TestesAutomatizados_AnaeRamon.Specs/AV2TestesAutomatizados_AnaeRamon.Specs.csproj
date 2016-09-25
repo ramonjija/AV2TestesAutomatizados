@@ -100,37 +100,50 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Features\Busca de palavras-chave.feature.cs">
+    <Compile Include="Steps\BuscaDePalavrasChave.cs" />
+    <Compile Include="Features\BuscaDePalavrasChave.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Busca de palavras-chave.feature</DependentUpon>
+      <DependentUpon>BuscaDePalavrasChave.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Gerenciar-Palavras.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Gerenciar-Palavras.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\RetweetDePalavras.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RetweetDePalavras.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\GerenciarPalavrasCadastradasSteps.cs" />
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\RetweetDePalavras.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Features\Busca de palavras-chave.feature">
+    <None Include="Features\BuscaDePalavrasChave.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Busca de palavras-chave.feature.cs</LastGenOutput>
+      <LastGenOutput>BuscaDePalavrasChave.feature.cs</LastGenOutput>
     </None>
     <None Include="Documentacao AV2\AV2 - Testes Automatizados" />
     <None Include="Features\Gerenciar-Palavras.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Gerenciar-Palavras.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\RetweetDePalavras.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RetweetDePalavras.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
