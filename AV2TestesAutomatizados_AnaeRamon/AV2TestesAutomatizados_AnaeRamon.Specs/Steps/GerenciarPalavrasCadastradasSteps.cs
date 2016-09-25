@@ -5,6 +5,8 @@ using System.Diagnostics;
 using NUnit.Framework;
 using AV2Database;
 using AV2Database.Model;
+using System.Threading;
+using System.Text;
 
 namespace AV2TestesAutomatizados_AnaeRamon.Specs
 {
@@ -17,14 +19,18 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [Given(@"que estou no menu principal do app BotTweeter")]
         public void DadoQueEstouNoMenuPrincipalDoAppBotTweeter()
         {
+            if(process != null)
+            {
+                process.Close();
+            }
             //ProcessStartInfo processStartInfo = new ProcessStartInfo(@"C:\vtex\ambiente\github\AV2TestesAutomatizados\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon\bin\Ana\AV2TestesAutomatizados_AnaeRamon.exe");
             ProcessStartInfo processStartInfo = new ProcessStartInfo(@"C:\Users\Ramon\Documents\Github\AV2TestesAutomatizados\AV2TestesAutomatizados_AnaeRamon\AV2TestesAutomatizados_AnaeRamon\bin\RHome\AV2TestesAutomatizados_AnaeRamon.exe");
             processStartInfo.RedirectStandardInput = true;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.UseShellExecute = false;
             processStartInfo.CreateNoWindow = true;
+            processStartInfo.StandardOutputEncoding = Encoding.GetEncoding(850);
             process = Process.Start(processStartInfo);
-           
         }
         #endregion
 
@@ -44,20 +50,13 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [Then(@"o sistema deve exibir uma mensagem de sucesso de cadastro")]
         public void EntaoOSistemaDeveExibirUmaMensagemDeSucessoDeCadastro()
         {
-            string line = "";
-            //while (process.StandardOutput.Peek() > -1)
-            int qntLine = process.StandardOutput.Peek();
-            while (qntLine > -1)
-            {
-                line = process.StandardOutput.ReadLine();
-                if (line.Equals(" Palavra 'Teste' foi cadastrada com sucesso!"))
-                {
-                    break;
-                }
-                qntLine--;
-            }
+            string retorno = "";
+            process.StandardInput.Close();
+
+            retorno = process.StandardOutput.ReadToEnd();
+
             process.Close();
-            Assert.AreEqual(" Palavra 'Teste' foi cadastrada com sucesso!", line);
+            Assert.IsTrue(retorno.Contains(" Palavra 'Teste' foi cadastrada com sucesso!"));
         }
 
         #endregion
@@ -99,9 +98,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         {
             string line = "";
             string idPalavra = "0";
-            int qntLinhas = process.StandardOutput.Peek();
-            //while (!process.StandardOutput.EndOfStream)
-            while(qntLinhas > -1)
+            while (!process.StandardOutput.EndOfStream)
             {
                 line = process.StandardOutput.ReadLine();
                 if (line.Contains(p0))
@@ -109,7 +106,12 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                     idPalavra = line.Substring(0, 3).Trim();
                     break;
                 }
-                qntLinhas--;
+                else
+                if (line.Contains(" Não há palavras cadastradas para serem removidas"))
+                {
+                    Assert.Fail("Não há palavras cadastradas para serem removidas");
+                    process.Close();
+                }
             }
             process.StandardInput.WriteLine(idPalavra);
         }
