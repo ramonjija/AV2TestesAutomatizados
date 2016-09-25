@@ -26,6 +26,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
            
         }
         #endregion
+
         #region Teste Cadastro de Palavra
         [When(@"digito a opção de cadastro de palavras")]
         public void QuandoDigitoAOpcaoDeCadastroDePalavras()
@@ -43,7 +44,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         public void EntaoOSistemaDeveExibirUmaMensagemDeSucessoDeCadastro()
         {
             string line = "";
-
             while (process.StandardOutput.Peek() > -1)
             {
                 line = process.StandardOutput.ReadLine();
@@ -52,8 +52,9 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                     break;
                 }
             }
-            process.Dispose();
             Assert.AreEqual(" Palavra 'Teste' foi cadastrada com sucesso!", line);
+
+            process.Close();
         }
 
         #endregion
@@ -78,7 +79,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                     break;
                 }
             }
-            process.Dispose();
             Assert.IsTrue(line.Contains(p0));
         }
         #endregion
@@ -120,7 +120,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                     break;
                 }
             }
-            process.Dispose();
             Assert.AreEqual(" Palavra removida com sucesso!", line);
         }
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using System.Diagnostics;
 
 namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
 {
@@ -21,6 +22,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
         public void AfterScenario()
         {
             //TODO: implement logic that has to run after executing each scenario
+
         }
     }
 }
