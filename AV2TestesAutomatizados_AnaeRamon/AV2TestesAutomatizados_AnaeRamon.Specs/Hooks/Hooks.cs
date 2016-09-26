@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
 using System.Diagnostics;
-using WatiN.Core;
-
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
 {
@@ -13,14 +15,14 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
     public sealed class Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-        
+        IWebDriver driver;
         [BeforeScenario]
         public void BeforeScenario()
         {
             try
             {
-                var browser = new FireFox("https://twitter.com/grupoanaeramon");
-                
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("http://www.twitter.com.br/grupoanaeramon/");
             }
             catch (Exception ex)
             {
@@ -33,6 +35,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
+            driver.Close();
         }
     }
 }
