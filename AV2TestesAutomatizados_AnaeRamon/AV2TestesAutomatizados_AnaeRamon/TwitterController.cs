@@ -15,9 +15,9 @@ namespace AV2TestesAutomatizados_AnaeRamon
             var twitterContext = new TwitterContext(autho);
 
             var tweets = from tweet in twitterContext.Status
-                where tweet.Type == StatusType.Home &&
-                      tweet.Count == 200
-                select tweet;
+                         where tweet.Type == StatusType.Home &&
+                               tweet.Count == 200
+                         select tweet;
 
             currentTweets = tweets.ToList();
 
@@ -31,12 +31,11 @@ namespace AV2TestesAutomatizados_AnaeRamon
 
         public static async void RetweetAsync(SingleUserAuthorizer autho, List<ulong> statusTweets)
         {
-            try
+            var twitterContext = new TwitterContext(autho);
+
+            foreach (var statustweets in statusTweets)
             {
-                var twitterContext = new TwitterContext(autho);
-
-
-                foreach (var statustweets in statusTweets)
+                try
                 {
                     var retweet = await twitterContext.RetweetAsync(statustweets);
 
@@ -50,39 +49,37 @@ namespace AV2TestesAutomatizados_AnaeRamon
                             "\nTweet: " + retweet.RetweetedStatus.Text + "\n");
                     }
                 }
-
+                catch (Exception e)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine(":::::::::::::::::ERRO NO RETWITTER :::::::::::::::::::::");
+                    Console.WriteLine("Esse tweet já foi retwitado ");
+                    Console.WriteLine("Não é possivel retwitar duas vezes ");
+                }
             }
-            catch (Exception)
-            {
-                Console.WriteLine("");
-                Console.WriteLine(":::::::::::::::::ERRO NO RETWITTER :::::::::::::::::::::");
-                Console.WriteLine("Esse tweet já foi retwitado ");
-                Console.WriteLine("Não é possivel retwitar duas vezes ");
-            }
-
         }
-        
+
+
         public static List<ulong> BuscarTwitters(SingleUserAuthorizer autho, List<GeracaoPalavras.TermosDeBusca> listSearchTerm)
         {
             List<ulong> statusTwitters = new List<ulong>();
-            var twitterContext = new TwitterContext(autho);         
+            var twitterContext = new TwitterContext(autho);
 
             foreach (var searchTerm in listSearchTerm)
             {
                 if (searchTerm.singular != null)
                 {
-                     var srchSingular =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
-                                                   where search.Type == SearchType.Search &&
-                                                   search.Query == searchTerm.singular &&
+                    var srchSingular =
+                      Enumerable.SingleOrDefault((from search in twitterContext.Search
+                                                  where search.Type == SearchType.Search &&
+                                                  search.Query == searchTerm.singular &&
                                                    search.Count == 5
-                                                   select search));
-
+                                                  select search));
                     foreach (var statuses in srchSingular.Statuses)
                     {
                         statusTwitters.Add(statuses.StatusID);
                     }
-                    
+
                 }
 
                 if (searchTerm.plural != null)
@@ -121,6 +118,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                                                    search.Query == searchTerm.maiusculo &&
                                                    search.Count == 5
                                                    select search));
+
                     foreach (var statuses in srchMaiusculo.Statuses)
                     {
                         statusTwitters.Add(statuses.StatusID);
@@ -134,6 +132,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                                                    search.Query == searchTerm.semEspacos &&
                                                    search.Count == 5
                                                    select search));
+
                     foreach (var statuses in srchSemEspacos.Statuses)
                     {
                         statusTwitters.Add(statuses.StatusID);
@@ -161,6 +160,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
                                                    search.Query == searchTerm.palavraCadastrada &&
                                                    search.Count == 5
                                                    select search));
+
                     foreach (var statuses in srchPalavraCadastrada.Statuses)
                     {
                         statusTwitters.Add(statuses.StatusID);
