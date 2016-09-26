@@ -12,7 +12,7 @@ Funcionalidade: Retweet de palavras-chave no twitter
 		E retweetar tudo automaticamente 
 		
 				
-	Cenario: Quero que pela segunda vez uma palavra ja retweetada seja retweetado de novo 
-		Dado que esqueci que ja retweetei uma palavra e chamo novamente o boot para relizar o retweet de novo    
+	Cenario: Falha ao tentar Retweetar o mesmo tweet mais de uma vez  
+		Dado que esqueci que retweetei uma palavra e chamo novamente o boot para relizar o retweet de novo    
 		Quando digito a opção de iniciar boot  
 		Então o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet
