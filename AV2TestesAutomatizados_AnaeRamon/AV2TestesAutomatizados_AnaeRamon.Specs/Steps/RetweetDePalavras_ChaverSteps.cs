@@ -9,17 +9,12 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Steps
     [Binding]
     public class RetweetDePalavras_ChaverSteps
     {
-        public static IWebDriver driver;
-        private Process process;
-
+        
         #region retweet de palavras cadastradas 
         [Given(@"que ja realizei minha busca pelas palavras que quero")]
         public void DadoQueJaRealizeiMinhaBuscaPelasPalavrasQueQuero()
         {
-            driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("https://twitter.com/grupoanaeramon");
-            process.Close();
-            driver.Quit();
+
         }
 
         [Then(@"o sistema deve mostrar quais tweets foram retweetados")]
@@ -31,10 +26,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Steps
         [Then(@"retweetar tudo automaticamente")]
         public void EntaoRetweetarTudoAutomaticamente()
         {
-            ScenarioContext.Current.Pending();
-            driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("https://twitter.com/grupoanaeramon");
-            driver.Quit();
         }
         #endregion
         #region retweete duas vezes de uma palavra 
