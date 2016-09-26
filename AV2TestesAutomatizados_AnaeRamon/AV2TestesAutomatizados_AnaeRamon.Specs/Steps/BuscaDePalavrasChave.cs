@@ -24,7 +24,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         public void EntaoOSistemaDeveExibirUmaMensagemDeSucessoDeBuscaNoTwitter()
         {
             ScenarioContext.Current.Pending();
-        }
+          }
         #endregion
         #region Busca por palavra chave não cadastrada no twitter
 

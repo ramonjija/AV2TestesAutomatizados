@@ -116,6 +116,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Features\RetweetDePalavrasCadastradas.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RetweetDePalavrasCadastradas.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\RetweetDePalavrasChavesNoTwiterSteps.cs" />
     <Compile Include="Steps\BuscaDePalavrasChave.cs" />
     <Compile Include="Features\BuscaDePalavrasChave.feature.cs">
       <AutoGen>True</AutoGen>
@@ -127,15 +133,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Gerenciar-Palavras.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\RetweetDePalavras.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RetweetDePalavras.feature</DependentUpon>
-    </Compile>
     <Compile Include="Steps\GerenciarPalavrasCadastradasSteps.cs" />
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\RetweetDePalavras_ChaverSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -150,9 +150,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Gerenciar-Palavras.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\RetweetDePalavras.feature">
+    <None Include="Features\RetweetDePalavrasCadastradas.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>RetweetDePalavras.feature.cs</LastGenOutput>
+      <LastGenOutput>RetweetDePalavrasCadastradas.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

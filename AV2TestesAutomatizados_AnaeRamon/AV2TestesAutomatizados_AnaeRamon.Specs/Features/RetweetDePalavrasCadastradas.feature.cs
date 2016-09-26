@@ -18,8 +18,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Retweet de palavras-chave no twitter")]
-    public partial class RetweetDePalavras_ChaveNoTwitterFeature
+    [NUnit.Framework.DescriptionAttribute("Retweet de palavras chaves no twiter")]
+    public partial class RetweetDePalavrasChavesNoTwiterFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,9 +28,9 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Retweet de palavras-chave no twitter", "\tPara seguir todo o conteudo relevantes sobre testes automatizados\r\n\tComo aluno d" +
-                    "e testes automatizados\r\n\tDesejo que todo o tweeter com determinadas palavras sob" +
-                    "re o assunto seja retweetado automaticamente ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Retweet de palavras chaves no twiter", "Para seguir todo o conteudo relevante sobre testes\r\nComo aluno de testes automati" +
+                    "zados\r\nDesejo que todo o tweeter com determinadas palavras sobre o assunto seja " +
+                    "retweetado automaticamente ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,27 +63,25 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Quero que minha busca no twitter por palavras especificas seja retweetado")]
-        public virtual void QueroQueMinhaBuscaNoTwitterPorPalavrasEspecificasSejaRetweetado()
+        [NUnit.Framework.DescriptionAttribute("Quero retweetar as palavras cadastrada no sistema")]
+        public virtual void QueroRetweetarAsPalavrasCadastradaNoSistema()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quero que minha busca no twitter por palavras especificas seja retweetado", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quero retweetar as palavras cadastrada no sistema", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que ja realizei minha busca pelas palavras que quero", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-            testRunner.When("digito a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("o sistema deve mostrar quais tweets foram retweetados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
-            testRunner.And("retweetar tudo automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+            testRunner.Given("que cadastrei a palavra \"Tamagochi\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("quero que o robo retweet tudo sobre a palavra automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Falha ao tentar Retweetar o mesmo tweet mais de uma vez")]
-        public virtual void FalhaAoTentarRetweetarOMesmoTweetMaisDeUmaVez()
+        [NUnit.Framework.DescriptionAttribute("Retweetar o mesmo tweet")]
+        public virtual void RetweetarOMesmoTweet()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Falha ao tentar Retweetar o mesmo tweet mais de uma vez", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar o mesmo tweet", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que esqueci que retweetei uma palavra e chamo novamente o boot para relizar o ret" +
-                    "weet de novo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-            testRunner.When("digito a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Given("que tento retweetar novamente sobre a palavra \"Tamagochi\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }

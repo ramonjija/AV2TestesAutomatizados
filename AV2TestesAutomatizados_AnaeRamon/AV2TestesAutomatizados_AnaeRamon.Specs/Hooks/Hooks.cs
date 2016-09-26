@@ -15,27 +15,17 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Hooks
     public sealed class Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-        IWebDriver driver;
+        
         [BeforeScenario]
         public void BeforeScenario()
         {
-            try
-            {
-                driver = new ChromeDriver();
-                driver.Navigate().GoToUrl("http://www.twitter.com.br/grupoanaeramon/");
-            }
-            catch (Exception ex)
-            {
-                
-                throw;
-            }
             
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            driver.Close();
+
         }
     }
 }
