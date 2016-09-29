@@ -80,7 +80,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busca de uma palavra-chave não cadastrada no twitter", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que esqueci de cadastrar uma palavra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que esqueci de cadastrar uma palavra e não possuo nenhuma outra cadastrada", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("digito a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de erro de busca no twitter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             testRunner.And("pedir para o usuario cadastrar uma palavra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");

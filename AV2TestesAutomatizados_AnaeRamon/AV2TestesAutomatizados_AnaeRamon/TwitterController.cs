@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using LinqToTwitter;
 
 namespace AV2TestesAutomatizados_AnaeRamon
@@ -46,7 +45,8 @@ namespace AV2TestesAutomatizados_AnaeRamon
                         Console.WriteLine("Retweeted um Tweet: ");
                         Console.WriteLine(
                             "\nUsuario: " + retweet.RetweetedStatus.User.ScreenNameResponse +
-                            "\nTweet: " + retweet.RetweetedStatus.Text + "\n");
+                            "\nTweet: " + retweet.RetweetedStatus.Text + 
+                            "\nTweetID: "+retweet.RetweetedStatus.StatusID);
                     }
                 }
                 catch (Exception e)
@@ -70,11 +70,12 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.singular != null)
                 {
                     var srchSingular =
-                      Enumerable.SingleOrDefault((from search in twitterContext.Search
+                      Enumerable.LastOrDefault((from search in twitterContext.Search
                                                   where search.Type == SearchType.Search &&
                                                   search.Query == searchTerm.singular &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                   select search));
+
                     foreach (var statuses in srchSingular.Statuses)
                     {
                         statusTwitters.Add(statuses.StatusID);
@@ -85,10 +86,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.plural != null)
                 {
                     var srchPlural =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.plural &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchPlural.Statuses)
@@ -99,10 +100,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.minusculo != null)
                 {
                     var srchMinusculo =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.minusculo &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchMinusculo.Statuses)
@@ -113,10 +114,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.maiusculo != null)
                 {
                     var srchMaiusculo =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.maiusculo &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchMaiusculo.Statuses)
@@ -127,10 +128,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.semEspacos != null)
                 {
                     var srchSemEspacos =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.semEspacos &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchSemEspacos.Statuses)
@@ -141,10 +142,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.semCaracteresEspeciais != null)
                 {
                     var srchsemCaracteresEspeciais =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.semCaracteresEspeciais &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchsemCaracteresEspeciais.Statuses)
@@ -155,10 +156,10 @@ namespace AV2TestesAutomatizados_AnaeRamon
                 if (searchTerm.palavraCadastrada != null)
                 {
                     var srchPalavraCadastrada =
-                       Enumerable.SingleOrDefault((from search in twitterContext.Search
+                       Enumerable.LastOrDefault((from search in twitterContext.Search
                                                    where search.Type == SearchType.Search &&
                                                    search.Query == searchTerm.palavraCadastrada &&
-                                                   search.Count == 5
+                                                   search.Count == 1
                                                    select search));
 
                     foreach (var statuses in srchPalavraCadastrada.Statuses)

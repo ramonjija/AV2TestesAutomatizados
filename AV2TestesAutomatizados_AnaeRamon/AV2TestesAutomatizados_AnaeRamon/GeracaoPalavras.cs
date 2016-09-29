@@ -62,7 +62,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
             termosDeBusca.maiusculo = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(palavrasModel.Nome);
 
             //Especiais
-            //palavrasModel.Nome = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+          //palavrasModel.Nome = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
             termosDeBusca.semCaracteresEspeciais = Regex.Replace(palavrasModel.Nome, "[^à-éÀ-Éa-zA-Z0-9_.]+", "", RegexOptions.Compiled);
 
             //Plural

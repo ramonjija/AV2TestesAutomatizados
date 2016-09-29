@@ -11,7 +11,7 @@ Funcionalidade: Busca de palavras-chave no twitter
 		Então o sistema deve exibir uma mensagem de sucesso de busca no twitter 
 		
 	Cenario: Busca de uma palavra-chave não cadastrada no twitter
-		Dado que esqueci de cadastrar uma palavra  
+		Dado que esqueci de cadastrar uma palavra e não possuo nenhuma outra cadastrada 
 		Quando digito a opção de iniciar boot  
 		Então o sistema deve exibir uma mensagem de erro de busca no twitter 
 		E pedir para o usuario cadastrar uma palavra 

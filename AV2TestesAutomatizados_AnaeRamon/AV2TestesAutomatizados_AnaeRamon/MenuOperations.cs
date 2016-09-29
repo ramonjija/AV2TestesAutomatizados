@@ -164,7 +164,7 @@ namespace AV2TestesAutomatizados_AnaeRamon
             }
             catch (Exception)
             {
-                Console.WriteLine(" Ocorreu um erro ao retornar a lista de palavras do banco de dados");
+                Console.WriteLine(" Ocorreu um erro ao retornar a lista de palavras do sistema");
                 throw;
             }
 

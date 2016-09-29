@@ -68,7 +68,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quero retweetar as palavras cadastrada no sistema", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que cadastrei a palavra \"Tamagochi\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que cadastrei a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345\" no sistema" +
+                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("quero que o robo retweet tudo sobre a palavra automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
             this.ScenarioCleanup();
@@ -80,7 +81,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar o mesmo tweet", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que tento retweetar novamente sobre a palavra \"Tamagochi\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que tento retweetar novamente sobre a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETA" +
+                    "DA00012345\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();

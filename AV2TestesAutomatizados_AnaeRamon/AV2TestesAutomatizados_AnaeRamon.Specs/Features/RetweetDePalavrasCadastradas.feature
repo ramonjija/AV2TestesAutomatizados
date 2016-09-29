@@ -7,12 +7,12 @@ Desejo que todo o tweeter com determinadas palavras sobre o assunto seja retweet
 
 
 	Cenario: Quero retweetar as palavras cadastrada no sistema 
-		Dado que cadastrei a palavra "Tamagochi" no sistema 
+		Dado que cadastrei a palavra "TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345" no sistema 
 	    Quando seleciono a opção de iniciar boot   
 		Entao quero que o robo retweet tudo sobre a palavra automaticamente  
 
 				
 	Cenario: Retweetar o mesmo tweet 
-		Dado que tento retweetar novamente sobre a palavra "Tamagochi"  
+		Dado que tento retweetar novamente sobre a palavra "TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345"  
 		Quando seleciono a opção de iniciar boot  
 		Então o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet
