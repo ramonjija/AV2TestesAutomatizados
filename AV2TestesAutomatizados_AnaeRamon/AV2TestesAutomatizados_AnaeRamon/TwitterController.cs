@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LinqToTwitter;
+using System.Threading.Tasks;
 
 namespace AV2TestesAutomatizados_AnaeRamon
 {
@@ -56,6 +57,21 @@ namespace AV2TestesAutomatizados_AnaeRamon
                     Console.WriteLine("Esse tweet já foi retwitado ");
                     Console.WriteLine("Não é possivel retwitar duas vezes ");
                 }
+            }
+        }
+
+        public static async Task DestroyRetweetAsync(ulong statusTweet)
+        {
+            var twitterContext = new TwitterContext(new TwitterConnector().authorization());
+            try
+            {
+                
+                var statusRT = await twitterContext.DeleteTweetAsync(statusTweet);
+                //var statusRT2 = await twitterContext.RetweetAsync(statusTweet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Data);
             }
         }
 

@@ -6,17 +6,13 @@ Como aluno de testes automatizados
 Desejo que todo o tweeter com determinadas palavras sobre o assunto seja retweetado automaticamente 
 
 
-	Cenario: Quero retweetar as palavras cadastrada no sistema 
-		Dado que cadastrei a palavra "TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345" no sistema 
-	    Quando seleciono a opção de iniciar boot   
-		Entao o robo deve retweetar tweets sobre a palavra "TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345" automaticamente  
-
-	Cenario: Retweetar o mesmo tweet 
-		Dado que tento retweetar novamente sobre a palavra "TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345"  
+			
+	Cenário: Retweetar o mesmo tweet 
+		Dado que tento retweetar novamente sobre a palavra "testegruporamoneanateste"  
 		Quando seleciono a opção de iniciar boot  
 		Então o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet
 
-		Cenário: Retweetar palavras cadastradas em minúsculo
+	Cenário: Retweetar palavras cadastradas em minúsculo
 		Dado que cadastrei a palavra "testegruporamoneanateste" no sistema
 		Quando seleciono a opção de inicar boot
 		Então o robo deve retweetar tweets sobre a palavra "testegruporamoneanateste" automaticamente

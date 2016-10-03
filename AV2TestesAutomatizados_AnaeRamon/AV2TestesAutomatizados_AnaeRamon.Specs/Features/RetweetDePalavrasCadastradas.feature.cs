@@ -63,27 +63,12 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Quero retweetar as palavras cadastrada no sistema")]
-        public virtual void QueroRetweetarAsPalavrasCadastradaNoSistema()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quero retweetar as palavras cadastrada no sistema", ((string[])(null)));
-            this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que cadastrei a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345\" no sistema" +
-                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-            testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETAD" +
-                    "A00012345\" automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Retweetar o mesmo tweet")]
         public virtual void RetweetarOMesmoTweet()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar o mesmo tweet", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que tento retweetar novamente sobre a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETA" +
-                    "DA00012345\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que tento retweetar novamente sobre a palavra \"testegruporamoneanateste\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
