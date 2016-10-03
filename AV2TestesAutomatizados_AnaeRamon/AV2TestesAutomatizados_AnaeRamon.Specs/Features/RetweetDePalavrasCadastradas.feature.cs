@@ -75,6 +75,18 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas em maiúsculo")]
+        public virtual void RetweetarPalavrasCadastradasEmMaiusculo()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas em maiúsculo", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que tento retweetar novamente sobre a palavra \"TESTEGRUPOANAERAMONTESTE\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas em minúsculo")]
         public virtual void RetweetarPalavrasCadastradasEmMinusculo()
         {
