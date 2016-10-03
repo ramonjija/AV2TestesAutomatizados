@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using LinqToTwitter;
 using System.Collections.ObjectModel;
+using AV2Database;
 
 namespace AV2TestesAutomatizados_AnaeRamon.Specs
 {
@@ -21,6 +22,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         private Process process;
         private string tweet;
         private string tweetId;
+        
 
         [Given(@"que cadastrei a palavra ""(.*)"" no sistema")]
         public void DadoQueCadastreiAPalavraNoSistema(string p0)
@@ -100,7 +102,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             if (retorno.Contains("Palavra(s) buscadas com sucesso!") && !retorno.Contains("Não é possivel retwitar duas vezes"))
             {
                 Assert.IsTrue(retorno.Contains("Palavra(s) buscadas com sucesso!"));
-                Assert.IsTrue(tweet.Contains(compara));
+                Assert.IsTrue(retorno.Contains("Retweeted um Tweet:"));
                 process.Close();
             }
             driver = new ChromeDriver();

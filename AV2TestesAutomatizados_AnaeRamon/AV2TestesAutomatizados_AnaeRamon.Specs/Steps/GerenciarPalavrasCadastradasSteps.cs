@@ -78,6 +78,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             process.StandardInput.Close();
             string retorno = process.StandardOutput.ReadToEnd();
             process.Close();
+            //context.UnderlyingTransaction.Rollback();
+            new DBPalavrasContext().Palavras.SqlQuery("Delete From TbPalavras");
 
             Assert.IsTrue(retorno.Contains(" -> " + p0));
 
@@ -133,6 +135,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
                 qntLines--;
             }
             process.Close();
+
             Assert.AreEqual(" Palavra removida com sucesso!", line);
         }
         #endregion

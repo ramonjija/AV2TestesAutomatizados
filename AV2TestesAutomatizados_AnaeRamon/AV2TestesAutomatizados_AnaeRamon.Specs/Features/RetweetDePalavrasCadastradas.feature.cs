@@ -80,9 +80,10 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas em maiúsculo", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que tento retweetar novamente sobre a palavra \"TESTEGRUPOANAERAMONTESTE\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que cadastrei a palavra \"TESTEGRUPORAMONEANATESTE\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"TESTEGRUPORAMONEANATESTE\" automatic" +
+                    "amente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }
         
@@ -131,10 +132,10 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas com caracteres especiais", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que cadastrei a palavra \"testegruporamoneanatestes!@#$%¨&\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que cadastrei a palavra \"testegrupor*&#amoneanateste\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamoneanatestes!@#$%¨&\" a" +
-                    "utomaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegrupor*&#amoneanateste\" automa" +
+                    "ticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }
         
