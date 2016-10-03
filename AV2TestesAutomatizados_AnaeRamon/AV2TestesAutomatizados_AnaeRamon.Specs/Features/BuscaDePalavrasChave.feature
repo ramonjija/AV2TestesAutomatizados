@@ -6,7 +6,7 @@ Funcionalidade: Busca de palavras-chave no twitter
 	Desejo realizar a busca utilizando as palavras-chave cadastradas
 
 	Cenario: Busca de uma palavra-chave ja cadastrada no twitter
-		Dado que ja cadastrei a palavra "Teste" 
+		Dado que ja cadastrei a palavra "testegrupo" 
 		Quando digito a opção de iniciar boot  
 		Então o sistema deve exibir uma mensagem de sucesso de busca no twitter 
 		

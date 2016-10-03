@@ -40,7 +40,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             
 
         }
-
+        /*
         [Then(@"quero que o robo retweet tudo sobre a palavra automaticamente")]
         public void EntaoQueroQueORoboRetweetTudoSobreAPalavraAutomaticamente()
         {
@@ -65,7 +65,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             Assert.Greater(element.Count, 0);
 
         }
-
+        */
         [Given(@"que tento retweetar novamente sobre a palavra ""(.*)""")]
         public void DadoQueTentoRetweetarNovamenteSobreAPalavra(string p0)
         {
@@ -78,8 +78,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             processStartInfo.StandardOutputEncoding = Encoding.GetEncoding(850);
             process = Process.Start(processStartInfo);
 
-            //process.StandardInput.WriteLine("2");
-            //process.StandardInput.WriteLine(p0);
+            process.StandardInput.WriteLine("2");
+            process.StandardInput.WriteLine(p0);
         }
 
         [Then(@"o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet")]
@@ -91,5 +91,36 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             Assert.IsTrue(retorno.Contains("Não é possivel retwitar duas vezes"));
 
         }
+
+        [When(@"seleciono a opção de inicar boot")]
+        public void QuandoSelecionoAOpcaoDeInicarBoot()
+        {
+            process.StandardInput.WriteLine("4");
+        }
+        
+        [Then(@"o robo deve retweetar tweets sobre a palavra ""(.*)"" automaticamente")]
+        public void EntaoORoboDeveRetweetarTweetsSobreAPalavraAutomaticamente(string p0)
+        {
+            string retorno = "";
+            string compara = p0;
+            process.StandardInput.Close();
+            retorno = process.StandardOutput.ReadToEnd();
+
+            int indiceInicioTweet = retorno.IndexOf("Tweet: "+p0);
+            int indiceInicioTweetId = retorno.IndexOf("TweetID: ");
+            tweet = retorno.Substring(indiceInicioTweet + 6, compara.Length + 1).Trim();
+            tweetId = retorno.Substring(indiceInicioTweetId + 9, 20).Trim();
+            if (retorno.Contains("Palavra(s) buscadas com sucesso!") && !retorno.Contains("Não é possivel retwitar duas vezes"))
+            {
+                Assert.IsTrue(retorno.Contains("Palavra(s) buscadas com sucesso!"));
+                Assert.IsTrue(tweet.Contains(compara));
+                process.Close();
+            }
+            driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://twitter.com/grupoanaeramon");
+            var element = driver.FindElements(By.CssSelector("*[data-tweet-id='" + tweetId + "']"));
+            Assert.Greater(element.Count, 0);
+        }
+
     }
 }

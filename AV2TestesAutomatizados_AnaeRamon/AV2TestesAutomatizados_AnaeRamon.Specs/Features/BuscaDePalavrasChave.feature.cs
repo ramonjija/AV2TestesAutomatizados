@@ -68,7 +68,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busca de uma palavra-chave ja cadastrada no twitter", ((string[])(null)));
             this.ScenarioSetup(scenarioInfo);
-            testRunner.Given("que ja cadastrei a palavra \"Teste\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.Given("que ja cadastrei a palavra \"testegrupo\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("digito a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de sucesso de busca no twitter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();

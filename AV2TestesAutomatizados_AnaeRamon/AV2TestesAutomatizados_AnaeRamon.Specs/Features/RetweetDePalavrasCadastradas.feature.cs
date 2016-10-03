@@ -71,7 +71,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
             testRunner.Given("que cadastrei a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETADA00012345\" no sistema" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("quero que o robo retweet tudo sobre a palavra automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"TESTEAUTOMACAOESSAMSGDEVESERDELETAD" +
+                    "A00012345\" automaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
             this.ScenarioCleanup();
         }
         
@@ -85,6 +86,71 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
                     "DA00012345\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("seleciono a opção de iniciar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
             testRunner.Then("o sistema deve exibir uma mensagem de erro na hora de realizar a ação de retweet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas em minúsculo")]
+        public virtual void RetweetarPalavrasCadastradasEmMinusculo()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas em minúsculo", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que cadastrei a palavra \"testegruporamoneanateste\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamoneanateste\" automatic" +
+                    "amente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas no singular")]
+        public virtual void RetweetarPalavrasCadastradasNoSingular()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas no singular", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que cadastrei a palavra \"testegruporamoneanateste\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamoneanateste\" automatic" +
+                    "amente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas no plural")]
+        public virtual void RetweetarPalavrasCadastradasNoPlural()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas no plural", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que cadastrei a palavra \"testegruporamoneanatestes\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamoneanatestes\" automati" +
+                    "camente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas com caracteres especiais")]
+        public virtual void RetweetarPalavrasCadastradasComCaracteresEspeciais()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas com caracteres especiais", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que cadastrei a palavra \"testegruporamoneanatestes!@#$%¨&\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamoneanatestes!@#$%¨&\" a" +
+                    "utomaticamente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retweetar palavras cadastradas com espaço")]
+        public virtual void RetweetarPalavrasCadastradasComEspaco()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retweetar palavras cadastradas com espaço", ((string[])(null)));
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("que cadastrei a palavra \"testegruporamon eanateste\" no sistema", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+            testRunner.When("seleciono a opção de inicar boot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+            testRunner.Then("o robo deve retweetar tweets sobre a palavra \"testegruporamon eanateste\" automati" +
+                    "camente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }
     }

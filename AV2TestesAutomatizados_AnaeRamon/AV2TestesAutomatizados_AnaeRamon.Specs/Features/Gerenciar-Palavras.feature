@@ -14,10 +14,10 @@ Funcionalidade: Gerenciar Palavras Cadastradas
 	Cenario: Exibição de Palavra-Chave
 		Dado que estou no menu principal do app BotTweeter
 		Quando digito a opção de exibição de palavras-chave
-		Então o sistema deve exibir a palavra cadastrada "Teste"
+		Então o sistema deve exibir a palavra cadastrada "TESTEEXIBICAOPALAVRA"
 
 	Cenario: Remoção de Palavra-Chave
 		Dado que estou no menu principal do app BotTweeter
 		Quando digito a opção de remoção de palavras
-		E insiro o id da palavra "Teste"
+		E insiro o id da palavra "TESTEEXIBICAOPALAVRA"
 		Então o sistema deve exibir uma mensagem de sucesso de remoção

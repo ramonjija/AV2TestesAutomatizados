@@ -83,7 +83,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
             this.ScenarioSetup(scenarioInfo);
             testRunner.Given("que estou no menu principal do app BotTweeter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("digito a opção de exibição de palavras-chave", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.Then("o sistema deve exibir a palavra cadastrada \"Teste\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+            testRunner.Then("o sistema deve exibir a palavra cadastrada \"TESTEEXIBICAOPALAVRA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }
         
@@ -95,7 +95,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs.Features
             this.ScenarioSetup(scenarioInfo);
             testRunner.Given("que estou no menu principal do app BotTweeter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
             testRunner.When("digito a opção de remoção de palavras", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-            testRunner.And("insiro o id da palavra \"Teste\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+            testRunner.And("insiro o id da palavra \"TESTEEXIBICAOPALAVRA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
             testRunner.Then("o sistema deve exibir uma mensagem de sucesso de remoção", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
             this.ScenarioCleanup();
         }

@@ -147,7 +147,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstTestCase.cs" />
     <Compile Include="GeracaoPalavras.cs" />
     <Compile Include="MenuOperations.cs" />
     <Compile Include="Program.cs" />

@@ -19,7 +19,7 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [Given(@"que estou no menu principal do app BotTweeter")]
         public void DadoQueEstouNoMenuPrincipalDoAppBotTweeter()
         {
-            if(process != null)
+            if (process != null)
             {
                 process.Close();
             }
@@ -65,6 +65,10 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [When(@"digito a opção de exibição de palavras-chave")]
         public void QuandoDigitoAOpcaoDeExibicaoDePalavras_Chave()
         {
+            /**/
+            process.StandardInput.WriteLine("2");
+            process.StandardInput.WriteLine("TESTEEXIBICAOPALAVRA");
+            /**/
             process.StandardInput.WriteLine("1");
         }
 
@@ -74,7 +78,9 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             process.StandardInput.Close();
             string retorno = process.StandardOutput.ReadToEnd();
             process.Close();
-            Assert.IsTrue(retorno.Contains(" -> "+p0));
+
+            Assert.IsTrue(retorno.Contains(" -> " + p0));
+
         }
         #endregion
 
@@ -82,6 +88,11 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
         [When(@"digito a opção de remoção de palavras")]
         public void QuandoDigitoAOpcaoDeRemocaoDePalavras()
         {
+            /**/
+            process.StandardInput.WriteLine("2");
+            process.StandardInput.WriteLine("TESTEEXIBICAOPALAVRA");
+            /**/
+
             process.StandardInput.WriteLine("3");
         }
         [When(@"insiro o id da palavra ""(.*)""")]
@@ -92,9 +103,9 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             while (!process.StandardOutput.EndOfStream)
             {
                 line = process.StandardOutput.ReadLine();
-                if (line.Contains(p0))
+                if (line.Contains(" -> "+ p0))
                 {
-                    idPalavra = line.Substring(0, 3).Trim();
+                    idPalavra = line.Substring(0, 4).Trim();
                     break;
                 }
                 else
@@ -125,5 +136,6 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             Assert.AreEqual(" Palavra removida com sucesso!", line);
         }
         #endregion
+
     }
 }

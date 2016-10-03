@@ -26,8 +26,8 @@ namespace AV2TestesAutomatizados_AnaeRamon.Specs
             processStartInfo.StandardOutputEncoding = Encoding.GetEncoding(850);
             process = Process.Start(processStartInfo);
 
-            process.StandardInput.Write("2");
-            process.StandardInput.Write(p0);
+            process.StandardInput.WriteLine("2");
+            process.StandardInput.WriteLine(p0);
 
 
         }
